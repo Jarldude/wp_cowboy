@@ -65,7 +65,25 @@ export const clean = () => {
 
 export const scripts = () =>{
     return gulp.src(paths.scripts.src)
-    .pipe(gulpWebpack())
+    .pipe(gulpWebpack({
+        module:{
+            loaders:[
+                {
+                    test:/\.js$/,
+                    use:{
+                        loader:'babel-loader',
+                        options:{
+                            presets:['babel-preset-es2015']
+                        }
+                    }
+                }
+            ]
+        },
+        output:{
+            filename:'bundle.js'
+        },
+        devtool: !PRODUCTION ? 'inline-source-map' : false
+    }))
     .pipe(gulp.dest(paths.scripts.dest));
 }
 

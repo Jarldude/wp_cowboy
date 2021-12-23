@@ -1,2 +1,3 @@
 import './components/slider';
-let x= 0;
+let x= 'cowboy';
+console.log('bundle.js enqueued: ',x);
