@@ -5,6 +5,8 @@ import gulpSass from 'gulp-sass'
 import cleanCSS from 'gulp-clean-css';
 import gulpif from 'gulp-if';
 import sourcemaps from 'gulp-sourcemaps';
+import del from 'del';
+import gulpWebpack from 'webpack-stream';
 
 const sass = gulpSass(dartSass)
 import imagemin from 'gulp-imagemin';
@@ -19,6 +21,10 @@ const paths = {
     images:{
         src:'src/assets/images/**/*.{jpg,jpeg,png,svg,gif}',
         dest:'dist/assets/images'
+    },
+    scripts:{
+        src:'src/assets/js/bundle.js',
+        dest:'dist/assets/js'
     },
     other:{
         src:['src/assets/**/*', '!src/assets/{images, js, scss}', '!src/assets/{images, js, scss}/**/*'],
@@ -53,7 +59,25 @@ export const copy = () => {
     .pipe(gulp.dest(paths.other.dest));
 }
 
+export const clean = () => {
+    return del(['dist']);
+}
+
+export const scripts = () =>{
+    return gulp.src(paths.scripts.src)
+    .pipe(gulpWebpack())
+    .pipe(gulp.dest(paths.scripts.dest));
+}
+
 export const watch = () => {
     console.log('watching');
-    gulp.watch('src/assets/scss/**/*.scss', styles)
+    gulp.watch('src/assets/scss/**/*.scss', styles);
+    gulp.watch(paths.images.src, images);
+    gulp.watch(paths.other.src, copy);
 }
+
+export const dev = gulp.series(clean, gulp.parallel(styles, images, copy), watch);
+export const build = gulp.series(clean, gulp.parallel(styles, images, copy));
+export default dev;
+
+
