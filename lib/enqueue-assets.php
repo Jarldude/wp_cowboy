@@ -11,5 +11,4 @@ function _themename_admin_assets() {
     wp_enqueue_style('_themename-admin-stylesheet', get_template_directory_uri() . '/dist/assets/css/admin.css',  array(), '1.0.0', 'all');
     wp_enqueue_script( '_themename-admin-script', get_template_directory_uri() . '/dist/assets/js/admin.js', array(), '1.0.0', true);
 }
-
 add_action('admin_enqueue_scripts', '_themename_admin_assets');
