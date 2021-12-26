@@ -17,7 +17,7 @@ get_header();?>
             </h1>
 
             <div> 
-                <?php cowboy_post_meta()?>
+                <?php _themename_post_meta()?>
             </div>
 
             <div>
@@ -25,12 +25,14 @@ get_header();?>
             </div>
 
             <div>
-                <?php cowboy_read_more_link()?>
+                <?php _themename_read_more_link()?>
             </div>
 
         <?php } ?>
 
         <?php the_posts_pagination(); ?>
+
+        <?php do_action('_themename_after_pagination'); ?>
 
     <?php } else { ?>
         <p>No posts</p>

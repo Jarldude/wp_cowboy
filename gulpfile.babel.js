@@ -12,6 +12,8 @@ import vinylNamed from 'vinyl-named';
 import browserSync from 'browser-sync';
 import imagemin from 'gulp-imagemin';
 import gulpZip from 'gulp-zip';
+import gulpReplace from 'gulp-replace';
+import info from './package.json';
 
 const server = browserSync.create();
 const sass = gulpSass(dartSass);
@@ -42,7 +44,8 @@ const paths = {
 
 export const compress = () => {
     return gulp.src(paths.package.src)
-    .pipe(gulpZip('cowboy.zip'))
+    .pipe(gulpReplace('_themename', info.name))
+    .pipe(gulpZip(`${info.name}.zip`))  
     .pipe(gulp.dest(paths.package.dest));
 }
 
