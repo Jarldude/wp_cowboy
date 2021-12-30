@@ -18,9 +18,18 @@
                 </div>
 
                 <?php get_search_form(true); ?>
+            </div>
+        </div>
 
+        <div class="c-navigation">
+            <div class="o-container">
+                <nav class="header-nav" role="navgation" aria-label="<?php echo esc_html_e('Main navigation', '_themename')?>">        
+                    <?php wp_nav_menu( array('theme_location' => 'main-menu' ) );?>
+                </nav>
             </div>
         </div>
     </header>
 
-    <div id="content">
+
+<!-- open content tag-->
+<div id="content"> 
