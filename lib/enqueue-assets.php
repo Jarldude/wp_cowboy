@@ -12,3 +12,10 @@ function _themename_admin_assets() {
     wp_enqueue_script( '_themename-admin-script', get_template_directory_uri() . '/dist/assets/js/admin.js', array(), '1.0.0', true);
 }
 add_action('admin_enqueue_scripts', '_themename_admin_assets');
+
+
+function _themename_customize_priview_js() {
+    wp_enqueue_script( '_themename-customize-priview', get_template_directory_uri() . '/dist/assets/js/customize-priview.js', array(
+        'customize-priview', 'jquery'), '1.0.0', true);
+}
+add_action('customize_priview_init', '_themename_customize_priview_js');

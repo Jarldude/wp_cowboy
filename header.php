@@ -8,6 +8,8 @@
 </head>
 <body <?php body_class();?>>
 
+    <a class="u-skip-link" href="#content"><?php esc_attr_e( 'Skip to content', '_themename'); ?></a>
+    
     <header role="banner" class="u-margin-bottom-40">
         <div class="c-header">
             <div class="o-container u-flex u-align-justify u-align-middle">
@@ -30,6 +32,6 @@
         </div>
     </header>
 
+    <!-- open content tag-->
 
-<!-- open content tag-->
-<div id="content"> 
+    <div id="content"> 

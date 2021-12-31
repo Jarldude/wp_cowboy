@@ -1,0 +1,7 @@
+
+
+resource used: https://www.w3.org/WAI/tutorials/menus/flyout/   Aproach_2
+megamenu logic implemented
+child and parrent navigations icons 
+accesebility added
+skiplink added
