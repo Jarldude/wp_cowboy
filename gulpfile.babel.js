@@ -74,7 +74,8 @@ export const styles = () => {
     .pipe(sass().on('error', sass.logError))
     .pipe(gulpif(PRODUCTION, cleanCSS({compatibility: 'ie8'})))
     .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
-    .pipe(gulp.dest(paths.styles.dest));
+    .pipe(gulp.dest(paths.styles.dest))
+    .pipe(server.stream());
 }
 
 export const images = () => {

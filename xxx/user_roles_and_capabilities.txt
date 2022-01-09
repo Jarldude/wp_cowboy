@@ -1,0 +1,4 @@
+https://wordpress.org/support/article/roles-and-capabilities/
+
+current_user_can(string $capability, mixed $args)
+user_can( $user->ID, 'edit_posts');
