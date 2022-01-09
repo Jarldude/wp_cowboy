@@ -1,0 +1,9 @@
+concatination in php can be done in two ways 
+
+double qiotes and $varname
+
+1 "lorem banana $variable makaka"
+
+or single quotes and dot 
+
+2 'lorem banana . $variable .  makaka'

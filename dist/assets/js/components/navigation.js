@@ -34,4 +34,3 @@ $(document).click((e) => {
         $('.menu > .menu-item.open > a > .menu-button').trigger('click');
     }
 })
-

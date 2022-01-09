@@ -9,6 +9,14 @@
             'gallery',
             'caption'
         ));
+        
+        add_theme_support( 'customize-selective-refresh-widgets');
+
+        add_theme_support( 'custom-logo', array(
+            'height' => 200,
+            'width' => 600,
+            'flex-height' => true
+        ));
     }
     add_action( 'after_setup_theme', '_themename_theme_support');
 ?>

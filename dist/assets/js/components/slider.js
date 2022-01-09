@@ -1,1 +1,1 @@
-console.log('comming from slider.js');
+console.log('slider.js is alive');

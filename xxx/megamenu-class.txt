@@ -1,0 +1,4 @@
+
+1. go screen options
+2. enable css classes
+3. add css classes to teh parrent menu item  "mega cols-4"
