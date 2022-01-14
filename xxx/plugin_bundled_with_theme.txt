@@ -1,0 +1,4 @@
+use this resource : http://tgmpluginactivation.com/download/
+TGM Plugin Activation 
+Copy  class-tgm-plugin-activation.php file into your working directory
+

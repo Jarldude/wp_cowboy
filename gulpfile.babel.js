@@ -32,6 +32,10 @@ const paths = {
         src:['src/assets/js/bundle.js', 'src/assets/js/admin.js', 'src/assets/js/customize-preview.js'],
         dest:'dist/assets/js'
     },
+    plugins:{
+        src:['../../plugins/_themename-metaboxes/packaged/*'],
+        dest:['lib/plugins']
+    },
     other:{
         src:['src/assets/**/*', '!src/assets/{images, js, scss}', '!src/assets/{images, js, scss}/**/*'],
         dest:'dist/assets'
@@ -42,12 +46,6 @@ const paths = {
     }
 }
 
-export const compress = () => {
-    return gulp.src(paths.package.src)
-    .pipe(gulpReplace('_themename', info.name))
-    .pipe(gulpZip(`${info.name}.zip`))  
-    .pipe(gulp.dest(paths.package.dest));
-}
 
 export const serve = (done)=>{
     server.init({
@@ -62,7 +60,7 @@ export const reload = (done) => {
 }
 
 export const cowboy = (done) => {
-    console.log('Cowboy yeehaa!!!');
+    console.log('Cowboy Theme gulp file');
     console.log(PRODUCTION);
     done();
 }
@@ -87,6 +85,11 @@ export const images = () => {
 export const copy = () => {
     return gulp.src(paths.other.src)
     .pipe(gulp.dest(paths.other.dest));
+}
+
+export const copyPlugins = () => {
+    return gulp.src(paths.plugins.src)
+    .pipe(gulp.dest(paths.plugins.dest));
 }
 
 export const clean = () => {
@@ -130,8 +133,15 @@ export const watch = () => {
     gulp.watch(paths.other.src, gulp.series(copy, reload));
 }
 
+export const compress = () => {
+    return gulp.src(paths.package.src)
+    .pipe(gulpif( (file)=> (file.relative.split('.').pop() !== 'zip'),gulpReplace('_themename', info.name)))
+    .pipe(gulpZip(`${info.name}.zip`))  
+    .pipe(gulp.dest(paths.package.dest));
+}
+
 export const dev = gulp.series(clean, gulp.parallel(styles, scripts, images, copy), serve, watch);
-export const build = gulp.series(clean, gulp.parallel(styles, scripts, images, copy));
+export const build = gulp.series(clean, gulp.parallel(styles, scripts, images, copy), copyPlugins);
 export const bundle = gulp.series(build, compress);
 export default dev;
 

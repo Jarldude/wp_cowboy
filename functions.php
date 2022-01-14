@@ -6,6 +6,7 @@ require_once('lib/enqueue-assets.php');
 require_once('lib/sidebars.php');
 require_once('lib/theme-support.php');
 require_once('lib/navigation.php');
+require_once('lib/include-plugins.php');
 //require_once('lib/metaboxes.php');
 
 
@@ -38,6 +39,15 @@ add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
 add_filter( 'use_widgets_block_editor', '__return_false' );
 
 add_action( 'init', '_themename_handle_delete_post' );
+
+
+function _themename_set_posts_per_page($query){
+    if($query->is_main_query()){
+        $query->set('posts_per_page', 20);
+    }
+}
+
+add_action( 'pre_get_posts', '_themename_set_posts_per_page');
 
 ?>
 
