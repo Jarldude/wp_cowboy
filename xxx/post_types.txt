@@ -1,0 +1,5 @@
+# sticky : post will appear firs on top page
+# paginated : post will have multiple pages with pagination
+# password protected
+# comments
+# Media: Twitter Embeds

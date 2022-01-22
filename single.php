@@ -15,17 +15,7 @@
     <div class ="o-row">
         <div class ="o-row__column o-row__column--span-12 o-row__column--span-<?php echo $layout === 'sidebar' ? '8' : '12' ?>@medium">
             <main role="main">
-                <?php 
-                    if(have_posts())  {  
-
-                        while(have_posts())  { 
-                            the_post();?>
-                            <?php get_template_part( 'template-parts/post/content' );?>
-                        <?php } ?>
-
-                    <?php } else { ?>
-                        <?php get_template_part( 'template-parts/post/content', 'none' );?>
-                <?php } ?>
+                <?php get_template_part( 'loop', 'single' );?>
             </main>
         </div>
 

@@ -1,0 +1,14 @@
+1.to handle comments settings : admin->settings->discussions-> 
+2. default comment behaviuor has a bug: 
+when you click reply to a nesed comment the page refreshes
+
+to handle this shit wi need to add to enquque: wp_enqueue_script( 'comment-reply');
+
+function _themename_assets() {
+   
+    ##### blabalbla
+    //fix refresh on comment bug
+    wp_enqueue_script( 'comment-reply');
+}
+add_action('wp_enqueue_scripts', '_themename_assets');
+
